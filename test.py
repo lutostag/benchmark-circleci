@@ -11,5 +11,5 @@ def fib(a):
         return 1
     return fib(a-1) + fib(a-2)
 
-def test_my_stuff(benchmark):
+def test_fib(benchmark):
     benchmark(fib, 35)
