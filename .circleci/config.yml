@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: run tests
+          command: |
+              sudo apt install -yq jq
+              sudo pip install -r requirements-dev.txt
+              mkdir -p /tmp/artifacts
+              pytest test.py --junit-xml=/tmp/artifacts/junit.xml --benchmark-json=/tmp/artifacts/bench.json
+      - store_artifacts:
+          path: /tmp/artifacts
