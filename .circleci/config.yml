@@ -11,7 +11,8 @@ jobs:
           command: |
               sudo apt install -yq jq
               sudo pip install -r requirements-dev.txt
+              .circleci/pull-artifacts /tmp/compare $CIRCLE_REF_BUILD_NUM
               mkdir -p /tmp/artifacts
-              pytest test.py --junit-xml=/tmp/artifacts/junit.xml --benchmark-json=/tmp/artifacts/bench.json
+              pytest test.py --junit-xml=/tmp/artifacts/junit.xml --benchmark-json=/tmp/artifacts/bench.json --benchmark-compare=/tmp/compare/bench.json
       - store_artifacts:
           path: /tmp/artifacts

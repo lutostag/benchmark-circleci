@@ -1,0 +1,6 @@
+#!/bin/sh
+
+OUTDIR=$1
+CIRCLE_REF_BUILD_NUM=${2:-$CIRCLE_PREVIOUS_BUILD_NUM}
+
+curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_REF_BUILD_NUM/artifacts?circle-token=$CIRCLE_TOKEN | jq -r '.[].url' | wget -i - -P $OUTDIR --user=$CIRLCE_TOKEN:
