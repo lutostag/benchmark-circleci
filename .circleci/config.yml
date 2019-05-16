@@ -16,3 +16,5 @@ jobs:
               pytest test.py --junit-xml=/tmp/artifacts/junit.xml --benchmark-json=/tmp/artifacts/bench.json --benchmark-compare=/tmp/compare/bench.json
       - store_artifacts:
           path: /tmp/artifacts
+      - store_test_results:
+          path: /tmp/artifacts
