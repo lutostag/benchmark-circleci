@@ -1,5 +1,5 @@
 import time
 
 def test_my_stuff(benchmark):
-    benchmark(time.sleep, 0.02)
+    benchmark(time.sleep, 0.10)
     assert False
